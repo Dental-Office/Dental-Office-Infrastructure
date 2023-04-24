@@ -17,13 +17,13 @@ resource "aws_security_group" "allow_http" {
    protocol         = "tcp"
    cidr_blocks      = ["0.0.0.0/0"]
   }
-  ingress {
-   description      = "allow mySQL"
-   from_port        = 3306
-   to_port          = 3306
-   protocol         = "tcp"
-   cidr_blocks      = ["0.0.0.0/0"]
-  }
+#   ingress {
+#    description      = "allow mySQL"
+#    from_port        = 3306
+#    to_port          = 3306
+#    protocol         = "tcp"
+#    cidr_blocks      = ["0.0.0.0/0"]
+#   }
   egress {
    description      = "allow all traffic"
    from_port        = 0

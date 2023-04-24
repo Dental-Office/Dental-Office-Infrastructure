@@ -69,25 +69,11 @@ resource "aws_eip" "static-ip" {
   }
 }
 
-# Create an elastic ip
-# resource "aws_eip" "static-ip2" {
-#   vpc = true 
-
-#   tags = {
-#     Name = "elastic_ip"
-#   }
-# }
-
 # Create the NAT Gateway
 resource "aws_nat_gateway" "nat_gateway" {
   allocation_id = aws_eip.static-ip.id
   subnet_id = aws_subnet.public_subnet_1.id
 }
-
-# resource "aws_nat_gateway" "nat_gateway_2" {
-#     allocation_id = aws_eip.static-ip2.id
-#     subnet_id = aws_subnet.public_subnet_2.id
-# }
 
 # Routing Table
 resource "aws_route_table" "public" {
@@ -116,19 +102,6 @@ resource "aws_route_table" "private" {
     }
   
 }
-
-# resource "aws_route_table" "private2" {
-#     vpc_id = aws_vpc.my_vpc.id
-    
-#     route {
-#         cidr_block = "0.0.0.0/0"
-#         gateway_id = aws_nat_gateway.nat_gateway_2.id
-#     }
-
-#     tags = {
-#       "Name" = "private_route_table_2"
-#     }
-# }
 
 resource "aws_route_table_association" "public_subnet_1" {
   subnet_id      = aws_subnet.public_subnet_1.id
