@@ -1,15 +1,15 @@
-# Security group to allow HTTP access to VPC, and allow all traffic from VPC
-resource "aws_security_group" "allow_http" {
- name = "allow_http"
- description = "Allow HTTP traffic"
+# Security group to allow SSH and HTTP access to VPC, and allow all traffic from VPC
+resource "aws_security_group" "allow_http_ssh" {
+ name = "allow_http_ssh"
+ description = "Allow HTTP and SSH traffic"
  vpc_id = aws_vpc.my_vpc.id
-#   ingress {
-#    description      = "allow SSH"
-#    from_port        = 22
-#    to_port          = 22
-#    protocol         = "tcp"
-#    cidr_blocks      = ["0.0.0.0/0"]
-#   }
+  ingress {
+   description      = "allow SSH"
+   from_port        = 22
+   to_port          = 22
+   protocol         = "tcp"
+   cidr_blocks      = ["0.0.0.0/0"]
+  }
   ingress {
    description      = "allow web http"
    from_port        = 80
@@ -31,21 +31,7 @@ resource "aws_security_group" "allow_http" {
    protocol         = "-1"
    cidr_blocks      = ["0.0.0.0/0"]
   }
-  tags = {Name = "allow_http"}
-}
-
-resource "aws_security_group" "ssh_access" {
-    name = "allow_ssh"
-    description = "Allow ssh access"
-
-    ingress {
-        description = "ssh_access"
-        from_port = 22
-        to_port = 22
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }  
-    tags = {Name = "ssh_traffic"}
+  tags = {Name = "allow_http_ssh"}
 }
 
 # resource "aws_security_group" "rds_sg" {

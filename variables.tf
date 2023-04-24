@@ -33,3 +33,8 @@ variable "region"{
     type = string
     default = "us-west-2"
 }
+
+variable "actions_enabled_up" {
+    description = "Do you want to enable automatic upscaling?"
+    default = true
+}

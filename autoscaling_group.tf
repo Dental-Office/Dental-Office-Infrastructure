@@ -3,10 +3,10 @@ resource "aws_autoscaling_group" "backend_app_autoscaling" {
   max_size             = 4
   desired_capacity     = 2
   launch_template {
-    id = aws_launch_template.launchtemplate.id 
+    id = aws_launch_template.launchtemplate_back.id 
   }
   vpc_zone_identifier  = [aws_subnet.public_subnet_1.id, aws_subnet.public_subnet_2.id]
-  target_group_arns    = [aws_lb_target_group.front.arn]
+  target_group_arns    = [aws_lb_target_group.backend.arn]
 }
 
 # scale up alarm
