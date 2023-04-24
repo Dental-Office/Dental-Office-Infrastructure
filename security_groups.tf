@@ -45,6 +45,7 @@ resource "aws_security_group" "ssh_access" {
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }  
+    tags = {Name = "ssh_traffic"}
 }
 
 # resource "aws_security_group" "rds_sg" {
