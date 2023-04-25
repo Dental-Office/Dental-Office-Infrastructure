@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir ~/jars
+mkdir /home/ec2-user/jars >>EOF
 
 # INSTANCE_ID="ami-0df24e148fdb9f1d8"
 

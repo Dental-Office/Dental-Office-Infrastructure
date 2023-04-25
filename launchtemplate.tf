@@ -1,3 +1,8 @@
+# resource "local_file" "backend_app_script" {
+#   filename = "/backend_app.sh"
+#   mode = "0755"
+  
+# }
 # Launch Template Resource
 resource "aws_launch_template" "launchtemplate_back2" {
   name = "launchtemplate_back2"
@@ -7,7 +12,11 @@ resource "aws_launch_template" "launchtemplate_back2" {
   # iam_instance_profile = "arn:aws:iam::414207150251:instance-profile/LabInstanceProfile"
   vpc_security_group_ids = [aws_security_group.allow_http_ssh.id]
   key_name = "vockey"
-  user_data = base64encode(file("${path.module}/backend_app.sh"))
+  # user_data = base64encode(file("${path.module}/backend_app.sh"))
+  user_data = <<-EOF 
+              #!/bin/bash
+              mkdir /home/ec2-user/jars
+              EOF
   monitoring {
     enabled = true
   }
