@@ -1,25 +1,27 @@
 #!/bin/bash
 
-INSTANCE_ID="ami-0df24e148fdb9f1d8"
+mkdir ~/jars
 
-# SSH key file for authentication
-SSH_KEY=/Downloads/labsuser.pem
+# INSTANCE_ID="ami-0df24e148fdb9f1d8"
 
-# Path to the .jar file on my machine
-FILE_PATH=/Documents/dentaloffice/dental-office-api/build/libs/dentaloffice-0.0.1-SNAPSHOT.jar
+# # SSH key file for authentication
+# SSH_KEY=/Downloads/labsuser.pem
 
-mkdir jars
+# # Path to the .jar file on my machine
+# FILE_PATH=/Documents/dentaloffice/dental-office-api/build/libs/dentaloffice-0.0.1-SNAPSHOT.jar
 
-DEST_PATH=/home/ec2-user/jars
+# mkdir jars
 
-cd jars
+# DEST_PATH=/home/ec2-user/jars
 
-aws ec2 scp $FILE_PATH ec2-user@$INSTANCE_ID:$DEST_PATH -i $SSH_KEY
+# cd jars
 
-sudo yum update
-sudo yum install java
+# aws ec2 scp $FILE_PATH ec2-user@$INSTANCE_ID:$DEST_PATH -i $SSH_KEY
 
-java -jar dentaloffice-o.0..1-SNAPSHOT.jar
+# sudo yum update
+# sudo yum install java
+
+# java -jar dentaloffice-o.0..1-SNAPSHOT.jar
 
 
 

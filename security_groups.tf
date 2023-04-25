@@ -17,13 +17,13 @@ resource "aws_security_group" "allow_http_ssh" {
    protocol         = "tcp"
    cidr_blocks      = ["0.0.0.0/0"]
   }
-#   ingress {
-#    description      = "allow mySQL"
-#    from_port        = 3306
-#    to_port          = 3306
-#    protocol         = "tcp"
-#    cidr_blocks      = ["0.0.0.0/0"]
-#   }
+  ingress {
+   description      = "allow postgreSQL"
+   from_port        = 5432
+   to_port          = 5432
+   protocol         = "tcp"
+   cidr_blocks      = ["0.0.0.0/0"]
+  }
   egress {
    description      = "allow all traffic"
    from_port        = 0
@@ -34,20 +34,20 @@ resource "aws_security_group" "allow_http_ssh" {
   tags = {Name = "allow_http_ssh"}
 }
 
-# resource "aws_security_group" "rds_sg" {
-#  name = "rds_sg"
-#  vpc_id = aws_vpc.my_vpc.id
-#  ingress {
-#   from_port       = 3306
-#   to_port         = 3306
-#   protocol        = "tcp"
-#   cidr_blocks = ["0.0.0.0/0"]
-#  }
-#  egress {
-#   from_port   = 0
-#   to_port     = 0
-#   protocol    = "-1"
-#   cidr_blocks = ["0.0.0.0/0"]
-#  }
-#  tags = {Name = "allow_3306_db"}
-# }
+resource "aws_security_group" "rds_sg" {
+ name = "rds_sg"
+ vpc_id = aws_vpc.my_vpc.id
+ ingress {
+  from_port       = 5432
+  to_port         = 5432
+  protocol        = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+ }
+ egress {
+  from_port   = 0
+  to_port     = 0
+  protocol    = "-1"
+  cidr_blocks = ["0.0.0.0/0"]
+ }
+ tags = {Name = "allow_5432_db"}
+}
