@@ -1,6 +1,6 @@
 # Launch Template Resource
-resource "aws_launch_template" "launchtemplate_back4" {
-  name     = "launchtemplate_back4"
+resource "aws_launch_template" "launchtemplate_back7" {
+  name     = "launchtemplate_back7"
   image_id = "ami-0df24e148fdb9f1d8"
   # image_id = "ami-0747e613a2a1ff483"
   instance_type = "t2.micro"
