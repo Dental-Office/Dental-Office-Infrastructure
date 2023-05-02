@@ -38,3 +38,13 @@ variable "actions_enabled_up" {
     description = "Do you want to enable automatic upscaling?"
     default = true
 }
+
+variable "aurora_engine" {
+    description = "aurora engine"
+    default     = "aurora-postgresql"
+}
+
+variable "aurora_engine_version" {
+    description = "aurora engine version"
+    default     = "14.6"
+}
