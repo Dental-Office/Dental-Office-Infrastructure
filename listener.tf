@@ -1,6 +1,6 @@
 resource "aws_lb_listener" "backend" {
     load_balancer_arn = aws_lb.backend.arn 
-    port = "80"
+    port = 8080
     protocol = "HTTP"
 
     default_action {

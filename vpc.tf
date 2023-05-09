@@ -1,6 +1,7 @@
 # VPC
 resource "aws_vpc" "my_vpc" {
   cidr_block = var.vpc_cidr
+  enable_dns_hostnames = true
   tags = {
     Name    = "my_vpc"
   }
@@ -98,7 +99,8 @@ resource "aws_route_table" "private" {
 
     route {
         cidr_block = "0.0.0.0/0"
-        gateway_id = aws_nat_gateway.nat_gateway.id 
+        gateway_id = aws_internet_gateway.igw.id 
+        # mijenjala
     }
 
     tags = {
