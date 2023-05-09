@@ -10,13 +10,13 @@ resource "aws_security_group" "allow_http_ssh" {
    protocol         = "tcp"
    cidr_blocks      = ["0.0.0.0/0"]
   }
-  ingress {
-   description      = "allow web http"
-   from_port        = 8080
-   to_port          = 8080
-   protocol         = "tcp"
-   cidr_blocks      = ["0.0.0.0/0"]
-  }
+  # ingress {
+  #  description      = "allow web http"
+  #  from_port        = 8080
+  #  to_port          = 8080
+  #  protocol         = "tcp"
+  #  cidr_blocks      = ["0.0.0.0/0"]
+  # }
   ingress {
    description      = "allow postgreSQL"
    from_port        = 5432
@@ -50,4 +50,31 @@ resource "aws_security_group" "rds_sg" {
   cidr_blocks = ["0.0.0.0/0"]
  }
  tags = {Name = "allow_5432_db"}
+}
+
+# Create a security group for the load balancer
+resource "aws_security_group" "lb_sg" {
+  name_prefix = "lb-sg-"
+  vpc_id = aws_vpc.my_vpc.id
+
+  ingress {
+    from_port = 8080
+    to_port = 8080
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 443
+    to_port = 443
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
