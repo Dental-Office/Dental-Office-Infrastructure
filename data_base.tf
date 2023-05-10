@@ -47,7 +47,7 @@ resource "aws_db_instance" "dental_office_db" {
 resource "aws_db_instance" "dental_office_db_replica" {
   identifier             = "dental-office-db-replica"
   instance_class         = "db.t3.micro"
-  allocated_storage      = 20
+  # allocated_storage      = 20
   engine                 = "postgres"
   engine_version         = "14.6"
   db_subnet_group_name   = aws_db_subnet_group.db_subnets.name

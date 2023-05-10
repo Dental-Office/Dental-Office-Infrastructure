@@ -7,6 +7,10 @@ resource "aws_lb" "backend" {
 
   enable_deletion_protection = false 
 
+  depends_on = [
+    aws_vpc.my_vpc
+  ]
+
   tags = {
     Environment = "front" 
   }

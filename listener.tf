@@ -3,6 +3,10 @@ resource "aws_lb_listener" "backend" {
     port = 8080
     protocol = "HTTP"
 
+    depends_on = [
+      aws_lb.backend
+    ]
+
     default_action {
         type = "forward" 
         target_group_arn = aws_lb_target_group.backend.arn
