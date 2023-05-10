@@ -1,6 +1,6 @@
 resource "aws_lb_listener" "backend" {
     load_balancer_arn = aws_lb.backend.arn 
-    port = 8080
+    port = 80
     protocol = "HTTP"
 
     depends_on = [
