@@ -43,3 +43,10 @@ aws s3api put-bucket-policy --bucket dental-office-app --region us-west-2 --poli
 }'
 
 echo "Bucket and objects set to public access successfully"
+
+
+# mkdir $BUCKET_NAME/frontend
+aws s3api put-object --bucket $BUCKET_NAME --key frontend_app/
+
+
+echo "Direktory is created"

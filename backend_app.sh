@@ -13,7 +13,6 @@ sudo yum update -y
 
 sudo yum install java-17-amazon-corretto-devel -y
 
-
 # Download the file from the S3 bucket to the local directory
 # aws s3 cp s3://$BUCKET_NAME/$S3_FILE_PATH $LOCAL_DIR/$LOCAL_FILE_NAME
 
