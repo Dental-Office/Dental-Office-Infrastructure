@@ -1,6 +1,6 @@
 # Launch Template Resource
-resource "aws_launch_template" "launchtemplate_back14" {
-  name     = "launchtemplate_back14"
+resource "aws_launch_template" "launchtemplate_back15" {
+  name     = "launchtemplate_back15"
   image_id = "ami-009c5f630e96948cb"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.allow_http_ssh.id]

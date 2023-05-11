@@ -4,7 +4,7 @@ echo `pwd`
 
 BUCKET_NAME="dental-office-app"
 REGION="us-west-2"
-FILE_PATH="/Users/draganaspasojevic/Documents/jars/dentaloffice-0.0.1-SNAPSHOT.jar"
+FILE_PATH="backend-app/dentaloffice-0.0.1-SNAPSHOT.jar"
 
 # Create the S3 bucket
 aws s3api create-bucket \
@@ -14,6 +14,7 @@ aws s3api create-bucket \
 
 echo "S3 bucket created successfully"
 
+# Copy file to the bucket
 aws s3 cp $FILE_PATH s3://$BUCKET_NAME/
 
 echo "File uploaded successfully"
