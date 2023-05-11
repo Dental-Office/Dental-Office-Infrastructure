@@ -19,7 +19,7 @@ aws s3 cp $FILE_PATH s3://$BUCKET_NAME/
 
 echo "File uploaded successfully"
 
-
+# Public access to the s3 bucket and object
 aws s3api put-public-access-block --bucket dental-office-app --public-access-block-configuration BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false
 
 
@@ -29,19 +29,17 @@ aws s3api put-bucket-policy --bucket dental-office-app --region us-west-2 --poli
         {
             "Effect": "Allow",
             "Principal": "*",
-            "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::'dental-office-app'/*"
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            
+            "Resource": [
+                "arn:aws:s3:::dental-office-app/*",
+                "arn:aws:s3:::dental-office-app"
+            ]
         }
     ]
 }'
 
-# FILE_NAME=dentaloffice-0.0.1-SNAPSHOT.jar
-# LOCAL_PATH="/home/ec2-user/jars"
-
-# aws s3 cp s3://$BUCKET_NAME/$FILE_NAME $LOCAL_PATH/ 
-
-# echo "File downloaded successfully"
-
-
-# echo "Bucket and objects set to public access successfully"
-
+echo "Bucket and objects set to public access successfully"
