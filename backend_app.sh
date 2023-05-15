@@ -16,5 +16,6 @@ sudo yum install java-17-amazon-corretto-devel -y
 cd $LOCAL_DIR
 
 wget $S3_JAR_FILE_URL
-
 echo "Successfully downloaded jar file to EC2 instance"
+
+java -jar $LOCAL_FILE_NAME
