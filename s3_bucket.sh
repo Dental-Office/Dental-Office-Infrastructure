@@ -5,13 +5,13 @@ REGION="us-west-2"
 FILE_PATH="backend-app/dentaloffice-0.0.1-SNAPSHOT.jar"
 FILE_PATH_FOR_FRONTEND="frontend-app/"
 
-# Create the S3 bucket
+Create the S3 bucket
 aws s3api create-bucket \
     --bucket $BUCKET_NAME \
     --region $REGION \
     --create-bucket-configuration LocationConstraint=$REGION
 
-echo "S3 bucket created successfully"
+# echo "S3 bucket created successfully"
 
 # Copy file to the bucket
 aws s3 cp $FILE_PATH s3://$BUCKET_NAME/
