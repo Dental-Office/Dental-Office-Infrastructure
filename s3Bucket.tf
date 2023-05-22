@@ -1,6 +1,5 @@
 resource "aws_s3_bucket" "cupstone-bucket" {
   bucket = "dental-office-app" 
-#   acl    = "public-read-write"  # Optional: Set the bucket access control list (ACL)
 
   tags = {
     Name        = "dental-office-app"
@@ -39,8 +38,8 @@ locals {
       source = "frontend-app/index.html"
     },
     {
-      key    = "main.3bd124c7f72f0c9f.js"
-      source = "frontend-app/main.3bd124c7f72f0c9f.js"
+      key    = "main.367313f72e1cceec.js"
+      source = "frontend-app/main.367313f72e1cceec.js"
     },
     {
       key    = "polyfills.d44a9f93a583eaa2.js"
