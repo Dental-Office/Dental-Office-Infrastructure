@@ -10,11 +10,7 @@ resource "aws_s3_bucket" "cupstone-bucket" {
 locals {
   files = [
     {
-      key    = "dentaloffice-0.0.1-SNAPSHOT.jar"
-      source = "backend-app/dentaloffice-0.0.1-SNAPSHOT.jar"
-    },
-    {
-      key    = "image.jpg"
+      key    = "assets/image.jpg"
       source = "frontend-app/assets/image.jpg"
     },
     {
@@ -38,8 +34,8 @@ locals {
       source = "frontend-app/index.html"
     },
     {
-      key    = "main.367313f72e1cceec.js"
-      source = "frontend-app/main.367313f72e1cceec.js"
+      key    = "main.c7b031a13b9783b7.js"
+      source = "frontend-app/main.c7b031a13b9783b7.js"
     },
     {
       key    = "polyfills.d44a9f93a583eaa2.js"
@@ -60,13 +56,24 @@ locals {
   ]
 }
 
-resource "aws_s3_bucket_object" "file_upload" {
+resource "aws_s3_bucket_object" "frontend_files_upload" {
+  content_type = each.value.key == "styles.53bb85ec0e34813b.css" ? "text/css" : each.value.key == "image.jpg" ? "image/jpg" : each.value.key == "index.html" ? "text/html" : "application/javascript" 
+  # content_type = each.value.key == "index.html" ? "text/html" : each.value.key == ".js" ? "application/javascript" : "image/jpeg"
   for_each = { for file in local.files : file.key => file }
   bucket = aws_s3_bucket.cupstone-bucket.id
-  key    = each.value.key
+  key    = "frontend_app/${each.value.key}"
   source = each.value.source
 
   depends_on = [aws_s3_bucket.cupstone-bucket] 
+}
+
+resource "aws_s3_bucket_object" "JAR_file_upload" {
+  bucket = aws_s3_bucket.cupstone-bucket.id
+  key    = "dentaloffice-0.0.1-SNAPSHOT.jar"
+  source = "backend-app/dentaloffice-0.0.1-SNAPSHOT.jar"
+
+  depends_on = [aws_s3_bucket.cupstone-bucket] 
+  
 }
 
 resource "aws_s3_bucket_public_access_block" "public_access" {
