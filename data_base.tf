@@ -22,7 +22,7 @@ resource "aws_db_instance" "dental_office_db" {
   skip_final_snapshot    = true
 }
 
-Create RDS database replica
+# Create RDS database replica
 resource "aws_db_instance" "dental_office_db_replica" {
   identifier             = "dental-office-db-replica"
   instance_class         = "db.t3.micro"
