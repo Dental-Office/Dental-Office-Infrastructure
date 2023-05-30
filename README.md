@@ -31,4 +31,4 @@ Potential patients or registered patients can visit this web application to sche
 
 <br>
 
-![capstoneDiagramm](https://github.com/Dragana916/Capstone-Project/blob/main/Documentation/Capstone_Project_Infrastructure.png)
+![capstoneDiagramm](https://github.com/Dental-Office/Dental-Office-Infrastructure/blob/main/Documentation/Capstone_Project_Infrastructure.png)
